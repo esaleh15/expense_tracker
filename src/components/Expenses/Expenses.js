@@ -18,6 +18,10 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
+  const deleteExpenseListItemHandler = (expenseId) => {
+    props.onRemoveExpense(expenseId);
+  };
+
 	return (
     <div>
       <Card className='expenses'>
@@ -26,7 +30,7 @@ const Expenses = (props) => {
           selected={filteredYear}>
         </ExpenseFilter>
         <ExpensesChart expenses={filteredExpenses}></ExpensesChart>
-        <ExpensesList expenses={filteredExpenses}></ExpensesList>
+        <ExpensesList expenses={filteredExpenses} onDeleteExpense={deleteExpenseListItemHandler}></ExpensesList>
       </Card>
     </div>
 		)
